@@ -17,10 +17,6 @@ travelPost.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        location: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         date: {
             // type:
             allowNull: false,
