@@ -1,7 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-travelPost.init(
+//to display the comment, the comment creator’s username, and the date created
+
+comment.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -9,21 +11,25 @@ travelPost.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        title: {
+        comment: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        content: {
+        user: {
             type: DataTypes.STRING,
             allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
         },
-        location: {
+        post: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        date: {
-            // type:
-            allowNull: false,
+            references: {
+                model: 'travelPost',
+                key: 'id'
+            }
         }
     },
     {
@@ -31,8 +37,8 @@ travelPost.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'travelPost',
+        modelName: 'comment',
     }
 );
 
-module.exports = travelPost;
+module.exports = comment;
