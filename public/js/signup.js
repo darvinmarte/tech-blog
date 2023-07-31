@@ -1,19 +1,21 @@
 const signUpHandler = async function(e){
     e.preventDefault()
-    const name = document.querySelector('#username-signup')
-    const email = document.querySelector('#email-signup')
-    const password = document.querySelector('#password-signup')
+    const name = document.querySelector('#username-signup').value.trim()
+    const email = document.querySelector('#email-signup').value.trim()
+    const password = document.querySelector('#password-signup').value.trim()
+    console.log(name, email, password)
 
 
     const response = await fetch('/api/users', {
-        method: 'post', 
+        method: 'POST', 
         body: JSON.stringify({
-            name: name.value,
-            email: email.value,
-            password: password.value
+            name: name,
+            email: email,
+            password: password
         }),
-        Headers: {'Content-Type': 'application/json'}
+        headers: {'Content-Type': 'application/json'}
     })
+    console.log(response)
     if (response.ok) {
         document.location.replace('/homepage')
     } else {
