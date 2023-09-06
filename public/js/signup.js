@@ -17,7 +17,7 @@ const signUpHandler = async function(e){
     })
     console.log(response)
     if (response.ok) {
-        document.location.replace('/homepage')
+        document.location.replace('/')
     } else {
         alert('Failed to sign up!')
     }
